@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PokeAPIWeb.Models.Pokemon>
+@{
+    Layout = "_Layout";
+}
+
+<section class="buscadores">
+    <form method="post" action="~/Home/Index">
+        <div>
+            <i class="fas fa-search"></i>
+            <input type="text" />
+        </div>
+
+        <select>
+            <option>--Habilidades--</option>
+        </select>
+        <select>
+            <option>--Poderes--</option>
+        </select>
+    </form>
+</section>
+
+@if (Model != null)
+{
+    <section class="resultados">
+        @foreach (var item in Model)
+        {
+            <section class="carta">
+                <img />
+
+            </section>
+        }
+    </section>
+}
+
+
+

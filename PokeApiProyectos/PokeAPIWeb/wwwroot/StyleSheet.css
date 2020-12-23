@@ -67,6 +67,25 @@ h1{
 .carta h3{
     text-align:center;
 }
+main h1{
+    text-align:center;
+}
+
+.imagen{
+    float:left;
+    margin:10px;
+    padding:5px;
+    border:10px solid yellow;
+    border-radius:10px;
+}
+.imagen img{
+    width:400px;
+    height:auto;
+}
+.datos{
+    float:right;
+    margin:10px;
+}
 
 footer {
     background-color: #ffea00;

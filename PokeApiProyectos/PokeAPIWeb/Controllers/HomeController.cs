@@ -77,7 +77,23 @@ namespace PokeAPIWeb.Controllers
 
         public async Task<IActionResult> VerPokemon(int id)
         {
-            return View();
+            if (id != 0)
+            {
+                cliente = Factory.CreateClient("Pokemones");
+
+                PokemonInfo p = new PokemonInfo();
+
+                var result = await cliente.GetAsync($"pokemon/{id}");
+                if (result.IsSuccessStatusCode)
+                {
+                    var json = await result.Content.ReadAsStringAsync();
+                    p = JsonConvert.DeserializeObject<PokemonInfo>(json);
+                }
+                return View(p);
+            }
+            else
+                return RedirectToAction("Index");
+            
         }
     }
 }

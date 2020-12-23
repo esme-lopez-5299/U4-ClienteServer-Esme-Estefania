@@ -1,7 +1,49 @@
 ﻿@model PokeAPIWeb.Models.PokemonInfo
 @{
-    ViewData["Title"] = "VerPokemon";
+    Layout = "_Layout";
 }
 
 <h1>@Model.name</h1>
+<div class="imagen">
+    <img src="https://i.pinimg.com/originals/d6/61/96/d66196beb60d306a966ea39ed11c2b3d.png"
+        width="400px"
+         />
+</div>
+<div class="datos">
+    <ol>
+        Habilidades:
+        @foreach (var item in Model.abilities)
+        {
+            <li>@item.ability.name</li>
+        }
+    </ol>
+    <p>Experiencia: @Model.base_experience</p>
+    <ul>
+        Formas:
+        @foreach (var item in Model.forms)
+        {
+            <li>@item.name</li>
+        }
+    </ul>
+    <ul>
+        Indices de juego:
+        @foreach (var item in Model.game_indices)
+        {
+            <li>@item.game_index: @item.version.name</li>
+        }
+    </ul>
+    <p>Altura: @Model.height</p>
+    <p>Items: @Model.held_items</p>
+    <p>Area de encuentros: @Model.location_area_encounters</p>
+    <p>Movimientos: @Model.moves</p>
+    <p>Orden: @Model.order</p>
+    <p>Especies: @Model.species</p>
+    <p>Espiritus: @Model.sprites</p>
+    <p>Stats: @Model.stats</p>
+    <p>Tipos: @Model.types</p>
+    <p>Peso: @Model.weight</p>
+</div>
+
+
+
 

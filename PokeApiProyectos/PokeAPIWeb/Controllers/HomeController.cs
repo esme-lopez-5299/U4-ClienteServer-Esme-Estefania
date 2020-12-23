@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PokeAPIWeb.Models;
+using PokeAPIWeb.Models.ViewModels;
 
 namespace PokeAPIWeb.Controllers
 {
@@ -18,31 +19,64 @@ namespace PokeAPIWeb.Controllers
             Factory = clientFactory;
 
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            IndexViewModel vm = new IndexViewModel();
+            try
+            {
+                cliente = Factory.CreateClient("Pokemones");
+
+                var result = await cliente.GetAsync("ability/?limit=20&offset=20");
+
+                if (result.IsSuccessStatusCode)
+                {
+                    var json = await result.Content.ReadAsStringAsync();
+                    vm.Habilidades = JsonConvert.DeserializeObject<ability>(json);
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+            }
+            
+            return View(vm);
         }
 
         [HttpPost]
         public async Task<IActionResult> Index(string texto, string habilidad, string poder)
         {
-            List<Pokemon> lista = new List<Pokemon>();
+            IndexViewModel vm = new IndexViewModel();
+            List<PokemonInfo> pokemones = new List<PokemonInfo>();
             try
             {
-                cliente = Factory.CreateClient("pokemon");
+                cliente = Factory.CreateClient("Pokemones");
 
-                var result = await cliente.GetAsync("/texto");
+                var result = await cliente.GetAsync("pokemon/1");
+                var result2 = await cliente.GetAsync("ability/?limit=20&offset=20");
 
-                if(result.IsSuccessStatusCode)
+                if (result.IsSuccessStatusCode && result2.IsSuccessStatusCode)
                 {
                     var json = await result.Content.ReadAsStringAsync();
-                    lista = JsonConvert.DeserializeObject<List<Pokemon>>(json);
+                    PokemonInfo p= JsonConvert.DeserializeObject<PokemonInfo>(json);
+                    pokemones.Add(p);
+
+                    var habilidades = await result2.Content.ReadAsStringAsync();
+
+                    vm.Habilidades = JsonConvert.DeserializeObject<ability>(habilidades);
+                    vm.Pokemones = pokemones;
                 }
             }
             catch(Exception ex)
             {
                 ModelState.AddModelError("", ex.Message);
             }
+
+            return View(vm);
+        }
+
+        public async Task<IActionResult> VerPokemon(int id)
+        {
             return View();
         }
     }

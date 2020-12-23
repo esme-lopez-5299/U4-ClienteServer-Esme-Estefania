@@ -103,3 +103,4 @@ C:\Users\fanny\source\repos\U4-ClienteServer-Esme-Estefania\PokeApiProyectos\Pok
 C:\Users\fanny\source\repos\U4-ClienteServer-Esme-Estefania\PokeApiProyectos\PokeAPIWeb\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\fanny\source\repos\U4-ClienteServer-Esme-Estefania\PokeApiProyectos\PokeAPIWeb\obj\Debug\netcoreapp3.1\PokeAPIWeb.csproj.CoreCompileInputs.cache
 C:\Users\fanny\source\repos\U4-ClienteServer-Esme-Estefania\PokeApiProyectos\PokeAPIWeb\obj\Debug\netcoreapp3.1\PokeAPIWeb.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\fanny\source\repos\U4-ClienteServer-Esme-Estefania\PokeApiProyectos\PokeAPIWeb\obj\Debug\netcoreapp3.1\Razor\Views\Home\VerPokemon.cshtml.g.cs

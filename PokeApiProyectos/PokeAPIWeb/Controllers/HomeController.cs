@@ -31,15 +31,8 @@ namespace PokeAPIWeb.Controllers
                 if (result.IsSuccessStatusCode)
                 {
                     var json = await result.Content.ReadAsStringAsync();
-                    vm.Habilidades = JsonConvert.DeserializeObject<ability>(json);
+                    vm.Habilidades = JsonConvert.DeserializeObject<abilityInfo>(json);
 
-                    //for (int i = 0; i < 300; i++)
-                    //{
-                    //    var habilidad = await cliente.GetAsync($"ability/{i}");
-                    //    var j = habilidad.Content.ReadAsStringAsync();
-                    //    var k = JsonConvert.DeserializeObject<string>(j);
-                    //    vm.habilidadesResult.Add(k);
-                    //}
                 }
                 
             }
@@ -71,7 +64,7 @@ namespace PokeAPIWeb.Controllers
 
                     var habilidades = await result2.Content.ReadAsStringAsync();
 
-                    vm.Habilidades = JsonConvert.DeserializeObject<ability>(habilidades);
+                    vm.Habilidades = JsonConvert.DeserializeObject<abilityInfo>(habilidades);
                     vm.Pokemones = pokemones;
                 }
             }

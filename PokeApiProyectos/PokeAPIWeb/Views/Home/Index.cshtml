@@ -9,7 +9,7 @@
     <form method="post" action="~/Home/Index">
 
 
-        <select asp-for="Habilidades" asp-items="@(new SelectList(Model.Habilidades, "url","name"))">
+        <select asp-for="Habilidades" asp-items="@(new SelectList(Model.Habilidades.results, "url","name"))">
             <option>--Habilidades--</option>
         </select>
         <select onchange="this.form.submit()">

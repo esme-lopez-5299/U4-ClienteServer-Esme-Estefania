@@ -9,8 +9,6 @@ namespace PokeAPIWeb.Models.ViewModels
     {
         public IEnumerable<PokemonInfo> Pokemones { get; set; }
 
-        public ability Habilidades { get; set; }
-
-        public List<string> habilidadesResult { get; set; }
+        public abilityInfo Habilidades { get; set; }
     }
 }

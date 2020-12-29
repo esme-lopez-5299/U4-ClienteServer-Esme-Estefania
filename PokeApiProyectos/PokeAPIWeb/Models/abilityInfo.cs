@@ -8,7 +8,9 @@ namespace PokeAPIWeb.Models
 {
     public class abilityInfo
     {
-        public int index { get; set; }
-        public string name { get; set; }
+        public int count { get; set; }
+        public string next { get; set; }
+        public object previous { get; set; }
+        public List<Result> results { get; set; }
     }
 }

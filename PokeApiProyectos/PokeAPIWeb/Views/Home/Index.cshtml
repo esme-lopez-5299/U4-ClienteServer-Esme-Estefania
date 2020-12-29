@@ -9,7 +9,7 @@
     <form method="post" action="~/Home/Index">
 
 
-        <select onchange="this.form.submit()" asp-for="Habilidades">
+        <select asp-for="Habilidades" asp-items="@(new SelectList(Model.Habilidades, "url","name"))">
             <option>--Habilidades--</option>
         </select>
         <select onchange="this.form.submit()">
@@ -21,6 +21,8 @@
             <i class="fas fa-search"></i>
             <input type="text" />
         </div>
+
+        <input type="submit" value="Buscar" class="buscar" />
     </form>
 </section>
 

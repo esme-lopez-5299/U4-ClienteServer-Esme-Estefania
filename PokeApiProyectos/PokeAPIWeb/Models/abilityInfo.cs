@@ -8,6 +8,7 @@ namespace PokeAPIWeb.Models
 {
     public class abilityInfo
     {
+        public int index { get; set; }
         public string name { get; set; }
     }
 }

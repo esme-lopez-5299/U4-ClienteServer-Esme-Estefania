@@ -26,12 +26,20 @@ namespace PokeAPIWeb.Controllers
             {
                 cliente = Factory.CreateClient("Pokemones");
 
-                var result = await cliente.GetAsync("ability/?limit=20&offset=20");
+                var result = await cliente.GetAsync("ability");
 
                 if (result.IsSuccessStatusCode)
                 {
                     var json = await result.Content.ReadAsStringAsync();
                     vm.Habilidades = JsonConvert.DeserializeObject<ability>(json);
+
+                    //for (int i = 0; i < 300; i++)
+                    //{
+                    //    var habilidad = await cliente.GetAsync($"ability/{i}");
+                    //    var j = habilidad.Content.ReadAsStringAsync();
+                    //    var k = JsonConvert.DeserializeObject<string>(j);
+                    //    vm.habilidadesResult.Add(k);
+                    //}
                 }
                 
             }

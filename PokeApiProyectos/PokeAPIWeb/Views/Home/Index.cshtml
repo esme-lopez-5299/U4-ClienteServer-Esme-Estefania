@@ -9,17 +9,15 @@
     <form method="post" action="~/Home/Index">
 
 
-        <select asp-for="Habilidades" asp-items="@(new SelectList(Model.Habilidades.results, "url","name"))">
-            <option>--Habilidades--</option>
+        <select asp-for="Habilidades" name="habilidad" asp-items="@(new SelectList(Model.Habilidades.results, "name", "name"))">
+            <option>--abilities--</option>
         </select>
-        <select onchange="this.form.submit()">
-            <option>--Poderes--</option>
-            <option>--Poderes2--</option>
-
+        <select asp-for="Tipos" name="tipo" asp-items="@(new SelectList(Model.Tipos.results,"name", "name"))">
+            <option>--Types--</option>
         </select>
         <div>
             <i class="fas fa-search"></i>
-            <input type="text" />
+            <input type="text" name="texto" />
         </div>
 
         <input type="submit" value="Buscar" class="buscar" />
@@ -32,7 +30,7 @@
         @foreach (var pokemon in Model.Pokemones)
         {
             <section class="carta">
-                <img />
+                <img src="@pokemon.sprites.other.OfficialArtwork.front_default" height="200px"/>
                 <h3>@pokemon.name</h3>
                 <p> peso: @pokemon.weight</p>
                 <a href="~/Home/VerPokemon/@pokemon.id">Ver mas</a>

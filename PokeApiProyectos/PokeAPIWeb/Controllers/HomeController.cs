@@ -57,31 +57,62 @@ namespace PokeAPIWeb.Controllers
             try
             {
                 cliente = Factory.CreateClient("Pokemones");
-
-                var result = await cliente.GetAsync("pokemon/1");
+                //Buscadores
+               
                 var habilidades = await cliente.GetAsync("ability?limit=327");
                 var tipos = await cliente.GetAsync("type");
 
-                if (result.IsSuccessStatusCode && habilidades.IsSuccessStatusCode)
+                if (habilidades.IsSuccessStatusCode && tipos.IsSuccessStatusCode)
                 {
-                    var json = await result.Content.ReadAsStringAsync();
-                    PokemonInfo p= JsonConvert.DeserializeObject<PokemonInfo>(json);
-                    pokemones.Add(p);
+                   
 
                     var jsonHabilidades = await habilidades.Content.ReadAsStringAsync();
                     var jsonTipos = await tipos.Content.ReadAsStringAsync();
 
                     vm.Habilidades = JsonConvert.DeserializeObject<abilityInfo>(jsonHabilidades);
                     vm.Tipos = JsonConvert.DeserializeObject<TypesInfo>(jsonTipos);
-
-                    vm.Pokemones = pokemones;
                 }
+
+                //Resultados
+                if (!String.IsNullOrEmpty(texto))
+                {
+                    var result = await cliente.GetAsync($"pokemon/{texto}");
+
+                    if(result.StatusCode==System.Net.HttpStatusCode.OK)
+                    {
+                        var json = await result.Content.ReadAsStringAsync();
+                        PokemonInfo p = JsonConvert.DeserializeObject<PokemonInfo>(json);
+                        pokemones.Add(p);
+                        
+                    }
+                    else
+                    {
+                        vm.Pokemones = pokemones;
+                    }
+                   
+                }
+                if (habilidad != null)
+                {
+                    var resultHabilidad = await cliente.GetAsync($"ability/{habilidad}");
+                    var jsonHabilidad = await resultHabilidad.Content.ReadAsStringAsync();
+                    HabilidadCompletaInfo habilidadObtenida = JsonConvert.DeserializeObject<HabilidadCompletaInfo>(jsonHabilidad);                     
+
+                    foreach (var p in habilidadObtenida.pokemon)
+                    {
+                        var poke = await cliente.GetAsync($"pokemon/{p}");
+                        var jsonPoke = await poke.Content.ReadAsStringAsync();
+                        PokemonInfo poke2 = JsonConvert.DeserializeObject<PokemonInfo>(jsonPoke);
+                        pokemones.Add(poke2);
+                    }
+                }
+
+
             }
             catch(Exception ex)
             {
                 ModelState.AddModelError("", ex.Message);
             }
-
+            vm.Pokemones = pokemones;
             return View(vm);
         }
 

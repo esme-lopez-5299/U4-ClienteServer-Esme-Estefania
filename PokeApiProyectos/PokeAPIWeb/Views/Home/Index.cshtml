@@ -17,27 +17,36 @@
         </select>
         <div>
             <i class="fas fa-search"></i>
-            <input type="text" name="texto" />
+            <input type="text" name="texto" placeholder="Buscar por nombre" />
         </div>
 
         <input type="submit" value="Buscar" class="buscar" />
     </form>
 </section>
 
-@if (Model.Pokemones != null)
+@if (Model.Pokemones != null )
 {
-    <section class="resultados">
-        @foreach (var pokemon in Model.Pokemones)
-        {
-            <section class="carta">
-                <img src="@pokemon.sprites.other.OfficialArtwork.front_default" height="200px"/>
-                <h3>@pokemon.name</h3>
-                <p> peso: @pokemon.weight</p>
-                <a href="~/Home/VerPokemon/@pokemon.id">Ver mas</a>
-            </section>
-        }
-    </section>
+    @if (Model.Pokemones.Count() >= 1)
+    {
+        <section class="resultados">
+            @foreach (var pokemon in Model.Pokemones)
+            {
+                <section class="carta">
+                    <img src="@pokemon.sprites.other.OfficialArtwork.front_default" height="200px" />
+                    <h3>@pokemon.name</h3>
+                    <p> peso: @pokemon.weight</p>
+                    <a href="~/Home/VerPokemon/@pokemon.id">Ver mas</a>
+                </section>
+            }
+        </section>
+    }
+    else
+    {
+        <h2>Lo sentimos, ningun pokemon coincide con tu busqueda</h2>
+    }
+
 }
+
 
 
 

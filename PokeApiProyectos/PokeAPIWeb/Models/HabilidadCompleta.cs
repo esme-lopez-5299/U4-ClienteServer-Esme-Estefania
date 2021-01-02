@@ -57,18 +57,18 @@ namespace PokeAPIWeb.Models
             public string name { get; set; }
         }
 
-        public class Pokemon
+        public class Poke
         {
             public string name { get; set; }
             public string url { get; set; }
         }
 
-        //public class Pokemon
-        //{
-        //    public bool is_hidden { get; set; }
-        //    public Pokemon2 pokemon { get; set; }
-        //    public int slot { get; set; }
-        //}
+        public class Pokemon1
+        {
+            public bool is_hidden { get; set; }
+            public Poke pokemon { get; set; }
+            public int slot { get; set; }
+        }
 
         public class Root
         {
@@ -80,7 +80,7 @@ namespace PokeAPIWeb.Models
             public bool is_main_series { get; set; }
             public string name { get; set; }
             public List<Name> names { get; set; }
-            public List<Pokemon> pokemon { get; set; }
+            public List<Pokemon1> pokemon { get; set; }
         }
 
 

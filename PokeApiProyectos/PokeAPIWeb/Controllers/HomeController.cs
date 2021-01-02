@@ -74,6 +74,7 @@ namespace PokeAPIWeb.Controllers
                 }
 
                 //Resultados
+                //Buscar por Nombre
                 if (!String.IsNullOrEmpty(texto))
                 {
                     var result = await cliente.GetAsync($"pokemon/{texto}");
@@ -91,7 +92,8 @@ namespace PokeAPIWeb.Controllers
                     }
                    
                 }
-                if (habilidad != null)
+                //Busca los de la habilidad
+                if (habilidad != "--Abilities--")
                 {
                     var resultHabilidad = await cliente.GetAsync($"ability/{habilidad}");
                     var jsonHabilidad = await resultHabilidad.Content.ReadAsStringAsync();
@@ -99,14 +101,27 @@ namespace PokeAPIWeb.Controllers
 
                     foreach (var p in habilidadObtenida.pokemon)
                     {
-                        var poke = await cliente.GetAsync($"pokemon/{p}");
+                        var poke = await cliente.GetAsync($"pokemon/{p.pokemon.name}");
                         var jsonPoke = await poke.Content.ReadAsStringAsync();
                         PokemonInfo poke2 = JsonConvert.DeserializeObject<PokemonInfo>(jsonPoke);
                         pokemones.Add(poke2);
                     }
                 }
+                //Buscar por tipos
+                if (tipo != "--Types--")
+                {
+                    var resultTipo = await cliente.GetAsync($"type/{tipo}");
+                    var jsonTipo = await resultTipo.Content.ReadAsStringAsync();
+                    TipoCompletoInfo tipoObtenido = JsonConvert.DeserializeObject<TipoCompletoInfo>(jsonTipo);
 
-
+                    foreach (var p in tipoObtenido.pokemon)
+                    {
+                        var poke = await cliente.GetAsync($"pokemon/{p.pokemon.name}");
+                        var jsonPoke = await poke.Content.ReadAsStringAsync();
+                        PokemonInfo poke2 = JsonConvert.DeserializeObject<PokemonInfo>(jsonPoke);
+                        pokemones.Add(poke2);
+                    }
+                }
             }
             catch(Exception ex)
             {

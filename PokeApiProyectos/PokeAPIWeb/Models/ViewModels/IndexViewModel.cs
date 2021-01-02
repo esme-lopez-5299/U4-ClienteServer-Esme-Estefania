@@ -11,5 +11,11 @@ namespace PokeAPIWeb.Models.ViewModels
 
         public abilityInfo Habilidades { get; set; }
         public TypesInfo Tipos { get; set; }
+
+        public string habilidadBuscada { get; set; }
+        public string tipoBuscado { get; set; }
+        public string nombreBuscado { get; set; }
+
+
     }
 }

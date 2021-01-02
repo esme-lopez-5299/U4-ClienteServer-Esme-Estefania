@@ -10,7 +10,7 @@
 
 
         <select asp-for="Habilidades" name="habilidad" asp-items="@(new SelectList(Model.Habilidades.results, "name", "name"))">
-            <option>--abilities--</option>
+            <option>--Abilities--</option>
         </select>
         <select asp-for="Tipos" name="tipo" asp-items="@(new SelectList(Model.Tipos.results,"name", "name"))">
             <option>--Types--</option>
@@ -19,8 +19,8 @@
             <i class="fas fa-search"></i>
             <input type="text" name="texto" placeholder="Buscar por nombre" />
         </div>
-
-        <input type="submit" value="Buscar" class="buscar" />
+        <input type="reset">
+        <input type="submit" value="Search" class="buscar" />
     </form>
 </section>
 
@@ -28,13 +28,14 @@
 {
     @if (Model.Pokemones.Count() >= 1)
     {
+        <h2>Se han encontrado (@Model.Pokemones.Count()) Pokemones que concuerdan con su busqueda.</h2>
+        <h2>Resultados:</h2>
         <section class="resultados">
             @foreach (var pokemon in Model.Pokemones)
             {
                 <section class="carta">
-                    <img src="@pokemon.sprites.other.OfficialArtwork.front_default" height="200px" />
+                    <img src="@pokemon.sprites.other.OfficialArtwork.front_default" height="200px" style="margin:auto"/>
                     <h3>@pokemon.name</h3>
-                    <p> peso: @pokemon.weight</p>
                     <a href="~/Home/VerPokemon/@pokemon.id">Ver mas</a>
                 </section>
             }

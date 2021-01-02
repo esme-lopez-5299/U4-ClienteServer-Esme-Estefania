@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using static PokeAPIWeb.Models.HabilidadCompleta;
-using pokemon = PokeAPIWeb.Models.HabilidadCompleta.Pokemon;
+using Pokemon = PokeAPIWeb.Models.HabilidadCompleta.Pokemon1;
 
 namespace PokeAPIWeb.Models
 {
@@ -17,6 +17,6 @@ namespace PokeAPIWeb.Models
         public bool is_main_series { get; set; }
         public string name { get; set; }
         public List<Name> names { get; set; }
-        public List<Pokemon> pokemon { get; set; }
+        public List<Pokemon1> pokemon { get; set; }
     }
 }

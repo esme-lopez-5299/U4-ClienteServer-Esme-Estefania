@@ -127,7 +127,7 @@ namespace PokeAPIWeb.Controllers
             {
                 ModelState.AddModelError("", ex.Message);
             }
-            vm.Pokemones = BuscadorHelper.EliminarDuplicados(pokemones);
+            vm.Pokemones = BuscadorHelper.FiltrarLista(pokemones, texto, habilidad, tipo);
             return View(vm);
         }
 

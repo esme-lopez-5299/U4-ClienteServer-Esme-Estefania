@@ -77,7 +77,7 @@ namespace PokeAPIWeb.Controllers
                 //Buscar por Nombre
                 if (!String.IsNullOrEmpty(texto))
                 {
-                    var result = await cliente.GetAsync($"pokemon/{texto}");
+                    var result = await cliente.GetAsync($"pokemon/{texto.ToLower()}");
 
                     if(result.StatusCode==System.Net.HttpStatusCode.OK)
                     {

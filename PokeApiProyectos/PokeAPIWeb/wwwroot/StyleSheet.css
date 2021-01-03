@@ -20,7 +20,10 @@ h1{
     margin:0;
     text-align:center;
 }
-
+main h2{
+    margin-left:20px;
+}
+/*Buscadores, headers de la pagina principal*/
 .buscadores{
     width:95%;
     display:flex;
@@ -36,64 +39,124 @@ h1{
 }
     .buscadores select {
         text-align: center;
-        padding: 5px;
+        padding: 6px;
         width: 200px;
+        border:1px solid black;
+        border-radius:10px;
     }
     .buscadores select option{
         text-align:center;
     }
-
-    .buscadores div input {
+    .buscadores div {
         padding: 5px;
         width: 200px;
+        border: 1px solid black;
+        border-radius: 10px;
     }
+
+        .buscadores div input[type=text] {
+            border: none;
+            background-color:transparent;
+        }
+    .buscadores input[type=submit] {
+        background-color: #0094ff;
+        padding: 10px;
+        border: 1px solid #0094ff;
+        border-radius: 10px;
+        width: 100px;
+        font-weight:bold;
+        color:white;
+    }
+    .buscadores input[type=reset] {
+        background-color: #f6443e;
+        padding: 10px;
+        border: 1px solid #f6443e;
+        border-radius: 10px;
+        width: 100px;
+        font-weight: bold;
+        color: white;
+    }
+/*Lista de resultados y cartas de informacion de los pokemones*/
 .resultados{
     display:flex;
     flex-direction:row;
     flex-wrap:wrap;
-    width:90%;
+    width:95%;
     height:400px;
     padding:10px;
     margin:auto;
     margin-top:10px;
+    justify-content:space-between;
+    overflow:auto;
 }
 
 .carta{
     padding:10px;
-    border:5px solid yellow;
+    border:10px solid yellow;
     border-radius:10px;
     margin:10px;
-    width:300px;
+    width:250px;
+    height:auto;
 }
 
 .carta h3{
     text-align:center;
 }
-main h1{
-    text-align:center;
+.carta img{
+    width:100%;
+    margin:auto;
 }
-
+main h1 {
+    text-align: center;
+    color: #00296b;
+}
+main .titulo {
+    color: #00296b;
+}
+main h2{
+    margin-left:10px;
+    margin-top:5px;
+}
+/*Imagen de ver pokemon*/
 .imagen{
     float:left;
-    margin:10px;
+    margin:20px;
+    width:30%;
     padding:5px;
     border:10px solid yellow;
     border-radius:10px;
 }
 .imagen img{
-    width:400px;
+    width:100%;
     height:auto;
 }
+/*Datos del pokemon*/
 .datos{
-    float:right;
     margin:10px;
+    background-color:#0094ff;
+    display:flex;
+    flex-direction:column;
+    width:50%;
+    border-radius:10px;
+    border:1px solid white;
+    padding:30px;
+}
+
+.datos p{
+   color:white;
+   font-weight:bold;
+}
+.datos p span{
+    color:black;
+
 }
 
 footer {
     background-color: #ffea00;
-    clear:left;
-    width:98%;
+    width: 100%;
     font-weight: bold;
     text-align: center;
-    padding:10px;
+    margin-top:10px;
+    padding: 10px;
+    clear: left;
 }

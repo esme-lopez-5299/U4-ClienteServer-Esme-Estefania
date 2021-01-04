@@ -3,41 +3,44 @@
     Layout = "_Layout";
 }
 
-<h1 class="titulo">@Model.name.ToUpper()</h1>
-<div class="imagen">
-    <img  src="@((Model.sprites.other.OfficialArtwork.front_default!=null) ? Model.sprites.other.OfficialArtwork.front_default : Model.sprites.front_default)" alt="Imagen no disponible"/>
-</div>
-<div class="datos">
-    <p>
-        Habilidades:
-        @foreach (var item in Model.abilities)
-        {
-            <span class="habilidad">@item.ability.name</span>
-        }
-    </p>
-    <p>Experiencia: <span> @Model.base_experience </span></p>
-    <p>Altura: <span> @Model.height mts</span></p>
-    <p>Peso: <span>@Model.weight Kg.</span> </p>
-    <p>Orden: <span> @Model.order</span></p>
-    <p>Especies: <span>@Model.species.name</span> </p>
-    <p>
-        Tipos:
-        @foreach (var item in Model.types)
-        {
-            <span class="habilidad">@item.type.name</span>
-        }
-    </p>
+    <h1 class="titulo">@Model.name.ToUpper()</h1>
+    <div class="imagen">
+        <img src="@((Model.sprites.other.OfficialArtwork.front_default!=null) ? Model.sprites.other.OfficialArtwork.front_default : Model.sprites.front_default)" alt="Imagen no disponible" />
+    </div>
+    <div class="datos">
+        <div class="datosIzquierda">
+            <p>Experiencia: <span> @Model.base_experience </span></p>
+            <p>Altura: <span> @Model.height mts</span></p>
+            <p>Peso: <span>@Model.weight Kg.</span> </p>
+            <p>Orden: <span> @Model.order</span></p>
+            <p>Especies: <span>@Model.species.name</span> </p>
+            <ul>
+                Formas:
+                @foreach (var item in Model.forms)
+                {
+                    <li class="habilidad">@item.name</li>
+                }
+            </ul>
+        </div>
+        <div class="datosDerecha">
+            <ul>
+                Habilidades:
+                @foreach (var item in Model.abilities)
+                {
+                    <li class="habilidad">@item.ability.name</li>
+                }
+            </ul>
+            <ul>
+                Tipos:
+                @foreach (var item in Model.types)
+                {
+                    <li class="habilidad">@item.type.name</li>
+                }
+            </ul>
+           
+        </div>
+    </div>
 
-    <p>
-        Formas:
-
-        @foreach (var item in Model.forms)
-        {
-            <span class="habilidad">@item.name</span>
-        }
-    </p>
-
-</div>
 
 
 

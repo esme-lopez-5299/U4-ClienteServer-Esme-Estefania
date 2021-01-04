@@ -144,8 +144,13 @@ namespace PokeAPIWeb.Controllers
                 {
                     var json = await result.Content.ReadAsStringAsync();
                     p = JsonConvert.DeserializeObject<PokemonInfo>(json);
+                    return View(p);
                 }
-                return View(p);
+                else
+                {
+                    return RedirectToAction("Index");
+                }
+               
             }
             else
                 return RedirectToAction("Index");

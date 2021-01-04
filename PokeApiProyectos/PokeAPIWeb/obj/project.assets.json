@@ -6011,25 +6011,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\esme_\\.nuget\\packages\\": {},
+    "C:\\Users\\fanny\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\esme_\\OneDrive\\Documentos\\SEPTIMO SEMESTRE\\ESPECIALIDAD\\U4-ClienteServer-Esme-Estefania\\PokeApiProyectos\\PokeAPIWeb\\PokeAPIWeb.csproj",
+      "projectUniqueName": "C:\\Users\\fanny\\source\\repos\\U4-ClienteServer-Esme-Estefania\\PokeApiProyectos\\PokeAPIWeb\\PokeAPIWeb.csproj",
       "projectName": "PokeAPIWeb",
-      "projectPath": "C:\\Users\\esme_\\OneDrive\\Documentos\\SEPTIMO SEMESTRE\\ESPECIALIDAD\\U4-ClienteServer-Esme-Estefania\\PokeApiProyectos\\PokeAPIWeb\\PokeAPIWeb.csproj",
-      "packagesPath": "C:\\Users\\esme_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\esme_\\OneDrive\\Documentos\\SEPTIMO SEMESTRE\\ESPECIALIDAD\\U4-ClienteServer-Esme-Estefania\\PokeApiProyectos\\PokeAPIWeb\\obj\\",
+      "projectPath": "C:\\Users\\fanny\\source\\repos\\U4-ClienteServer-Esme-Estefania\\PokeApiProyectos\\PokeAPIWeb\\PokeAPIWeb.csproj",
+      "packagesPath": "C:\\Users\\fanny\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\fanny\\source\\repos\\U4-ClienteServer-Esme-Estefania\\PokeApiProyectos\\PokeAPIWeb\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\esme_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\fanny\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],

@@ -9,18 +9,35 @@ header {
     background-color: #ffea00;
     width:100%;
     margin-bottom:10px;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
 }
-    header h1 {
+    header .principal {
+       text-decoration:none;
+       display:block;
+       width:85%;
+    }
+    header .principal h1{
         color: #00296b;
-        padding:10px;
-        text-align:center;
+        padding: 18px;
+        text-align: center;
+        vertical-align: central;
+        margin:auto;
+    }
+    header .logo img{
+        height:70px;
+        padding:5px;
     }
 h1{
     padding:0;
     margin:0;
     text-align:center;
 }
-main h2{
+body{
+    min-height:500px;
+}
+h2{
     margin-left:20px;
 }
 /*Buscadores, headers de la pagina principal*/
@@ -121,7 +138,7 @@ main h2{
 .imagen{
     float:left;
     margin:20px;
-    width:30%;
+    width:25%;
     padding:5px;
     border:10px solid yellow;
     border-radius:10px;
@@ -131,15 +148,17 @@ main h2{
     height:auto;
 }
 /*Datos del pokemon*/
-.datos{
-    margin:10px;
-    background-color:#0094ff;
-    display:flex;
-    flex-direction:column;
-    width:50%;
-    border-radius:10px;
-    border:1px solid white;
-    padding:30px;
+.datos {
+    margin: 10px;
+    background-color: #0096c7;
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    border-radius: 10px;
+    border: 1px solid white;
+    padding: 30px;
+    justify-content: space-around;
+    margin: 30px auto;
 }
 
 .datos p{
@@ -151,12 +170,43 @@ main h2{
 
 }
 
+.datos .datosIzquierda{
+    width:40%;
+    padding-left:10px;
+    float:left;
+
+}
+
+    .datos .datosDerecha {
+        width: 40%;      
+
+    }
+
+    div ul{
+        color:white;
+        /*margin:0;*/
+        padding:0;
+        font-weight:bold;
+    }
+
+        div ul li {
+            /* padding-left: 10px;*/
+            list-style: none;
+            background-color: #00296b;
+            border-radius: 20px;
+            border: 1px solid #00296b;
+            margin: 10px;
+            padding: 5px;
+            margin-left:-5px;
+            text-align:center;
+        }
+
 footer {
     background-color: #ffea00;
     width: 100%;
     font-weight: bold;
     text-align: center;
     margin-top:10px;
-    padding: 10px;
+    padding: 10px 0px 10px 0px;
     clear: left;
 }

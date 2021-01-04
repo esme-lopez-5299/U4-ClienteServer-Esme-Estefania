@@ -53,6 +53,7 @@
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -68,6 +69,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ability.cs" />
+    <Compile Include="Models\abilityInfo.cs" />
+    <Compile Include="Models\HabilidadCompleta.cs" />
+    <Compile Include="Models\HabilidadCompletaInfo.cs" />
+    <Compile Include="Models\Pokemon.cs" />
+    <Compile Include="Models\PokemonInfo.cs" />
+    <Compile Include="Models\TipoCompleto.cs" />
+    <Compile Include="Models\TipoCompletoInfo.cs" />
+    <Compile Include="Models\Types.cs" />
+    <Compile Include="Models\TypesInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -92,6 +103,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

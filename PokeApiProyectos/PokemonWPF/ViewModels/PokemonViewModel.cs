@@ -30,13 +30,14 @@ namespace PokemonWPF.ViewModels
         public List<PokemonInfo> Pokemones { get; set; }
         public abilityInfo Habilidades { get; set; }        
         public TypesInfo Tipos { get; set; }
-        public string Mensaje { get; set; }
+        public string Mensaje { get; set; } = "Selecciona tu búsqueda para iniciar";
 
         public PokemonInfo PokemonParameter { get; set; } = new PokemonInfo();
         public Modal ModalVisible { get; set; } = Modal.Ver;
 
         public ICommand HacerBusquedaCommand { get; set; }
         public ICommand VerDetalleCommand { get; set; }
+        public ICommand CancelarCommand { get; set; }
 
         HttpClient client = new HttpClient() { BaseAddress = new Uri("https://pokeapi.co/api/v2/") };
 
@@ -67,6 +68,13 @@ namespace PokemonWPF.ViewModels
             GetCombos();
             HacerBusquedaCommand = new RelayCommand<Busqueda>(HacerBusqueda);
             VerDetalleCommand = new RelayCommand<PokemonInfo>(VerDetalle);
+            CancelarCommand = new RelayCommand(Cancelar);
+        }
+
+        public void Cancelar()
+        {
+            ModalVisible = Modal.Ver;
+            Lanzar();
         }
 
         public void VerDetalle(PokemonInfo pokemonParametro)

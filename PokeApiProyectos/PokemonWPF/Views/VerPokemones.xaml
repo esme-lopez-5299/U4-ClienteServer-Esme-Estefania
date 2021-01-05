@@ -41,27 +41,52 @@
         </WrapPanel>
         <StackPanel>
             <TextBlock Text="{Binding Mensaje}" Margin="80,10,80,10" FontWeight="Bold" FontSize="20"></TextBlock>
-                <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                <!--<ListBox Width="600"  ScrollViewer.VerticalScrollBarVisibility="Visible" 
             Name="lstPokemones" Background="White" ItemsSource="{Binding Pokemones}"  Margin="50,5">
-                <ListBox.ItemsPanel>
+                <ListBox.ItemsPanel >
                     <ItemsPanelTemplate>
-                            <UniformGrid Columns="4"></UniformGrid>
+                            <UniformGrid  Columns="4"></UniformGrid>
                         </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate  >
                         <DataTemplate>
                             <Border BorderBrush="#ffea00" BorderThickness="2">
                             <StackPanel HorizontalAlignment="Right">
-                                <Image Source="{Binding sprites.other.OfficialArtwork.front_default}" Height="150"></Image>
-                                <TextBlock Typography.Capitals="AllSmallCaps"  Foreground="Black" Text="{Binding name}"
+                                <Image HorizontalAlignment="Center" Source="{Binding sprites.other.OfficialArtwork.front_default}" Height="150"></Image>
+                                <TextBlock  HorizontalAlignment="Center" Typography.Capitals="AllSmallCaps"  Foreground="Black" Text="{Binding name}"
                                 Margin="5"  FontFamily="Brandon Grotesque" FontSize="20">
                                 </TextBlock>
                             </StackPanel>
                             </Border>
                         </DataTemplate>
                 </ListBox.ItemTemplate>
-            </ListBox>
-                <Button Width="100" Command="{Binding VerDetalleCommand}" CommandParameter="{Binding ElementName=lstPokemones, Path=SelectedItem}">Ver más</Button>
+            </ListBox>-->
+                <ScrollViewer Name="scroll">
+                    <ItemsControl ItemsSource="{Binding Pokemones}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="6" IsItemsHost="True"></UniformGrid>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Margin="20" BorderBrush="#ffea00" BorderThickness="4">
+                                    <UniformGrid Rows="3" HorizontalAlignment="Center">
+                                        <Image HorizontalAlignment="Center" Source="{Binding sprites.other.OfficialArtwork.front_default}" Height="150"></Image>
+                                        <TextBlock  HorizontalAlignment="Center" Typography.Capitals="AllSmallCaps"  Foreground="Black" Text="{Binding name}"
+                                Margin="5"  FontFamily="Brandon Grotesque" FontSize="20">
+                                        </TextBlock>
+                                        <Button Width="100" Command="{Binding 
+                                            DataContext.VerDetalleCommand, ElementName=scroll}" CommandParameter="{Binding ElementName=lstPokemones, Path=SelectedItem}">Ver más</Button>
+                                    </UniformGrid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+                      
+       
+               
             </StackPanel>
     </DockPanel>
 

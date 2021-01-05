@@ -7,20 +7,59 @@
              mc:Ignorable="d" 
              d:DesignHeight="850" d:DesignWidth="900" >
     <Grid Background="#50000000">
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="300" MinWidth="300" Background="White">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="300" MinWidth="800" Background="White">
+            
+            <Grid DockPanel.Dock="Top" Background="#ffea00" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="2*" ></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image Margin="20,10,0,10" Source="/Images/logo.png" Width="160"></Image>
+                <TextBlock Grid.Column="1"  Foreground="#00296b" FontWeight="Bold" HorizontalAlignment="Center" Height="45" FontSize="35" FontFamily="Segoe UI" TextAlignment="Center" Width="795">Find your Pokemon</TextBlock>
+                <Button Grid.Column="2" Foreground="White" FontWeight="Bold" Background="#f6443e" VerticalAlignment="Top"  Command="{Binding CancelarCommand}"  HorizontalAlignment="Right" Width="20">X</Button>
+            </Grid>
             <StackPanel Margin="10">
-                <TextBlock>Nombre:</TextBlock>
-                <TextBox  Text="{Binding PokemonParameter.name}" ></TextBox>
-                <TextBlock>Contenido:</TextBlock>
-                <TextBox AcceptsReturn="True" Height="60" Text=""></TextBox>
-                <TextBlock>Prioridad:</TextBlock>
-                
-
-                <TextBlock Margin="10" Foreground="Red" FontSize="10" Text="{Binding Mensaje}"></TextBlock>
-
-                <WrapPanel Margin="0, 10">
-                    <Button Command="{Binding CancelarCommand}" Margin="10,0">Cancelar</Button>
-                </WrapPanel>
+                <TextBlock Typography.Capitals="AllSmallCaps"   Text="{Binding PokemonParameter.name}" ></TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border BorderBrush="#ffea00" BorderThickness="3">
+                        <Image Width="350" Source="{Binding PokemonParameter.sprites.other.OfficialArtwork.front_default}"></Image>
+                    </Border>
+                    <Border CornerRadius="5" Grid.Column="1">
+                            <UniformGrid Columns="2" Rows="7">
+                            <WrapPanel>
+                                <TextBlock>Experiencia:</TextBlock>
+                                <TextBlock Text=""></TextBlock>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <TextBlock>Altura:</TextBlock>
+                                <TextBlock Text=""></TextBlock>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <TextBlock>Peso:</TextBlock>
+                                <TextBlock Text=""></TextBlock>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <TextBlock>Orden:</TextBlock>
+                                <TextBlock Text=""></TextBlock>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <TextBlock>Especies:</TextBlock>
+                                <TextBlock Text=""></TextBlock>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <TextBlock>Formas:</TextBlock>
+                                <TextBlock Text=""></TextBlock>
+                            </WrapPanel>
+                        </UniformGrid>
+                        </Border>
+                                         
+                </Grid>
+               
 
             </StackPanel>
         </StackPanel>

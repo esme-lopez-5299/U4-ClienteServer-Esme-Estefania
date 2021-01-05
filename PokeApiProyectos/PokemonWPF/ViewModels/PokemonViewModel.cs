@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
+using PokemonWPF.Helpers;
 using PokemonWPF.Models;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace PokemonWPF.ViewModels
         }
 
         public Busqueda BusquedaObj { get; set; } = new Busqueda();
-        public ObservableCollection<PokemonInfo> Pokemones { get; set; }
+        public List<PokemonInfo> Pokemones { get; set; }
         public abilityInfo Habilidades { get; set; }        
         public TypesInfo Tipos { get; set; }
         public string Mensaje { get; set; }
@@ -66,10 +67,12 @@ namespace PokemonWPF.ViewModels
 
         private async void HacerBusqueda(Busqueda parametrosBusqueda)
         {
-
+            Mensaje = "Realizando búsqueda";
+            Lanzar(nameof(Mensaje));
+            List<PokemonInfo> pokemonesTemp = new List<PokemonInfo>();
             try
             {
-                ObservableCollection<PokemonInfo> pokemonesTemp = new ObservableCollection<PokemonInfo>();
+                
                 if (!String.IsNullOrEmpty(parametrosBusqueda.nombreBuscado))
                 {
                     var result = await client.GetAsync($"pokemon/{parametrosBusqueda.nombreBuscado.ToLower()}");
@@ -87,7 +90,7 @@ namespace PokemonWPF.ViewModels
                     }
                 }
                 //Busca los de la habilidad
-                if (parametrosBusqueda.habilidadBuscada.ToString() != "--Abilities--")
+                if (parametrosBusqueda.habilidadBuscada!= "--Abilities--"&& parametrosBusqueda.habilidadBuscada !=null)
                 {
                     var resultHabilidad = await client.GetAsync($"ability/{parametrosBusqueda.habilidadBuscada}");
                     var jsonHabilidad = await resultHabilidad.Content.ReadAsStringAsync();
@@ -102,7 +105,7 @@ namespace PokemonWPF.ViewModels
                     }
                 }
                 //Buscar por tipos
-                if (parametrosBusqueda.tipoBuscado != "--Types--")
+                if (parametrosBusqueda.tipoBuscado != "--Types--" && parametrosBusqueda.tipoBuscado !=null)
                 {
                     var resultTipo = await client.GetAsync($"type/{parametrosBusqueda.tipoBuscado }");
                     var jsonTipo = await resultTipo.Content.ReadAsStringAsync();
@@ -122,8 +125,11 @@ namespace PokemonWPF.ViewModels
             {
                 Mensaje = e.ToString();
                 Lanzar(nameof(Mensaje));
-            }
-          
+            }            
+            Pokemones = BuscadorHelper.FiltrarLista(pokemonesTemp, parametrosBusqueda.nombreBuscado, parametrosBusqueda.habilidadBuscada, parametrosBusqueda.tipoBuscado).ToList();
+            Mensaje = $"Se han encontrado {Pokemones.Count()} resultados que coinciden con su búsqueda";
+            Lanzar(nameof(Mensaje));
+            Lanzar(nameof(Pokemones));
         }
     }
 

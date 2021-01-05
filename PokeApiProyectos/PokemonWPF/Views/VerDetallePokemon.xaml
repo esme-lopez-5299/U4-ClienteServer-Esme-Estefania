@@ -26,7 +26,7 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Border BorderBrush="#ffea00" BorderThickness="3">
+                    <Border BorderBrush="#ffea00" BorderThickness="5">
                         <Image Width="350" Source="{Binding PokemonParameter.sprites.other.OfficialArtwork.front_default}"></Image>
                     </Border>
                     <Border CornerRadius="5" Grid.Column="1">

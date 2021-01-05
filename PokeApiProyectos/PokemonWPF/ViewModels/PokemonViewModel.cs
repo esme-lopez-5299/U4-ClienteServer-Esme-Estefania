@@ -67,7 +67,7 @@ namespace PokemonWPF.ViewModels
         {
             GetCombos();
             HacerBusquedaCommand = new RelayCommand<Busqueda>(HacerBusqueda);
-            VerDetalleCommand = new RelayCommand<PokemonInfo>(VerDetalle);
+            VerDetalleCommand = new RelayCommand<string>(VerDetalle);
             CancelarCommand = new RelayCommand(Cancelar);
         }
 
@@ -77,12 +77,11 @@ namespace PokemonWPF.ViewModels
             Lanzar();
         }
 
-        public void VerDetalle(PokemonInfo pokemonParametro)
+        public void VerDetalle(string pokemonParametro)
         {
-            ModalVisible = Modal.VerDetalle;
-            PokemonParameter = pokemonParametro;
+            ModalVisible = Modal.VerDetalle;           
+            PokemonParameter = Pokemones.First(x => x.name == pokemonParametro);
             Lanzar();
-
         }
 
         private async void HacerBusqueda(Busqueda parametrosBusqueda)

@@ -79,7 +79,7 @@ namespace PokemonWPF.ViewModels
             BusquedaObj.habilidadBuscada = null;
             BusquedaObj.nombreBuscado = null;
             BusquedaObj.tipoBuscado = null;
-            Pokemones.Clear();
+            Pokemones=null;
             Lanzar();
         }
 

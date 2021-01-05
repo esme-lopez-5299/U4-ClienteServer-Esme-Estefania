@@ -17,22 +17,74 @@
             <Image  Margin="20,10,0,10" Source="/Images/logo.png" Width="160"></Image>
             <TextBlock Foreground="#00296b" FontWeight="Bold" HorizontalAlignment="Center" Height="45" FontSize="35" FontFamily="Segoe UI" TextAlignment="Center" Width="795">Find your Pokemon</TextBlock>
         </WrapPanel>
-        <WrapPanel Margin="0,10,0,0" DockPanel.Dock="Top" HorizontalAlignment="Right">
-            <ComboBox Background="White" Margin="10,0,10,0"  SelectedValue="{Binding BusquedaObj.habilidadBuscada, Mode=TwoWay}" SelectedValuePath="name" ItemsSource="{Binding Habilidades.results}" Width="140">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <ComboBoxItem Content="{Binding name}"></ComboBoxItem>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>                            
-            <ComboBox Margin="10,0,10,0" SelectedValue="{Binding BusquedaObj.tipoBuscado, Mode=TwoWay}" SelectedValuePath="name" ItemsSource="{Binding Tipos.results}" Width="140">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding name}"></TextBlock>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-            <TextBox Margin="10,0,10,0" Width="140" FontSize="18" Text="{Binding BusquedaObj.nombreBuscado}"></TextBox>
+            <WrapPanel Margin="0,10,0,0" DockPanel.Dock="Top" HorizontalAlignment="Right">
+                <Grid>
+                    <ComboBox Name="mybox" Background="White" Margin="10,0,10,0"  SelectedValue="{Binding BusquedaObj.habilidadBuscada, Mode=TwoWay}" SelectedValuePath="name" ItemsSource="{Binding Habilidades.results}" Width="140">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <ComboBoxItem Content="{Binding name}"></ComboBoxItem>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="14"  Text="--Abilities--" IsHitTestVisible="False">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Visibility" Value="Hidden"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=mybox,Path=SelectedItem}" Value="{x:Null}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+
+                <Grid>
+                    <ComboBox Name="myboxTypes" Margin="10,0,10,0" SelectedValue="{Binding BusquedaObj.tipoBuscado, Mode=TwoWay}" SelectedValuePath="name" ItemsSource="{Binding Tipos.results}" Width="140">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding name}"></TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="14"  Text="--Types--" IsHitTestVisible="False">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Visibility" Value="Hidden"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=myboxTypes,Path=SelectedItem}" Value="{x:Null}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+                <TextBox  Margin="10,0,10,0" Width="140" FontSize="18" Text="{Binding BusquedaObj.nombreBuscado}">
+                    <TextBox.Style>
+                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                            <Style.Resources>
+                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                    <VisualBrush.Visual>
+                                        <Label Content="Search by name" Foreground="LightGray" />
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="Text" Value="{x:Null}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="Background" Value="White" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
             <Border CornerRadius="8" Background="#f6443e" Margin="10,0,10,0">
                 <Button Command="{Binding ResetCommand}" Background="Transparent" Foreground="White" BorderBrush="Transparent" FontWeight="Bold" Padding="20,0" FontSize="18" x:Name="btnReset">Reset</Button>
             </Border>

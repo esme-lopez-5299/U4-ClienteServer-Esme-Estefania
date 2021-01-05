@@ -34,7 +34,7 @@
             </ComboBox>
             <TextBox Margin="10,0,10,0" Width="140" FontSize="18" Text="{Binding BusquedaObj.nombreBuscado}"></TextBox>
             <Border CornerRadius="8" Background="#f6443e" Margin="10,0,10,0">
-                <Button Background="Transparent" Foreground="White" BorderBrush="Transparent" FontWeight="Bold" Padding="20,0" FontSize="18" x:Name="btnReset">Reset</Button>
+                <Button Command="{Binding ResetCommand}" Background="Transparent" Foreground="White" BorderBrush="Transparent" FontWeight="Bold" Padding="20,0" FontSize="18" x:Name="btnReset">Reset</Button>
             </Border>
             <Border CornerRadius="8" Background="#0094ff" Margin="10,0,10,0">
                 <Button FontSize="18" Background="Transparent" BorderBrush="Transparent" FontWeight="Bold" Foreground="White" Padding="18,0" Command="{Binding HacerBusquedaCommand}" CommandParameter="{Binding BusquedaObj}" x:Name="btnSearch">Search</Button>
@@ -59,8 +59,16 @@
                                                 <RowDefinition Height=".5*"></RowDefinition>
                                                 <RowDefinition></RowDefinition>
                                             </Grid.RowDefinitions>
-                                        <Image  Stretch="Fill" HorizontalAlignment="Center" Source="{Binding sprites.other.OfficialArtwork.front_default}" Height="170"></Image>
-                                        <TextBlock  Grid.Row="1" HorizontalAlignment="Center" Typography.Capitals="AllSmallCaps"  Foreground="Black" Text="{Binding name}"
+                                            <Image  Stretch="Uniform" HorizontalAlignment="Center"  Height="170">
+                                                <Image.Source>
+                                                    <Binding Path="sprites.other.OfficialArtwork.front_default" >
+                                                        <Binding.TargetNullValue>
+                                                            <ImageSource>/Images/logo.png</ImageSource>
+                                                        </Binding.TargetNullValue>
+                                                    </Binding>
+                                                </Image.Source>
+                                            </Image>
+                                            <TextBlock  Grid.Row="1" HorizontalAlignment="Center" Typography.Capitals="AllSmallCaps"  Foreground="Black" Text="{Binding name}"
                                            FontFamily="Brandon Grotesque" FontSize="20">
                                         </TextBlock>
                                             <Border Margin="0,0,0,10" Grid.Row="2" Background="#0094ff"  CornerRadius="8" Height="40"  Width="100">

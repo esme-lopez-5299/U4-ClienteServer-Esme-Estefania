@@ -39,6 +39,8 @@ namespace PokemonWPF.ViewModels
         public ICommand VerDetalleCommand { get; set; }
         public ICommand CancelarCommand { get; set; }
 
+        public ICommand ResetCommand { get; set; }
+
         HttpClient client = new HttpClient() { BaseAddress = new Uri("https://pokeapi.co/api/v2/") };
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -69,7 +71,19 @@ namespace PokemonWPF.ViewModels
             HacerBusquedaCommand = new RelayCommand<Busqueda>(HacerBusqueda);
             VerDetalleCommand = new RelayCommand<string>(VerDetalle);
             CancelarCommand = new RelayCommand(Cancelar);
+            ResetCommand = new RelayCommand(Reset);
         }
+
+        public void Reset()
+        {
+            BusquedaObj.habilidadBuscada = null;
+            BusquedaObj.nombreBuscado = null;
+            BusquedaObj.tipoBuscado = null;
+            Pokemones.Clear();
+            Lanzar();
+        }
+
+
 
         public void Cancelar()
         {
@@ -88,6 +102,7 @@ namespace PokemonWPF.ViewModels
         {
             Mensaje = "Realizando búsqueda";
             Lanzar(nameof(Mensaje));
+            
             List<PokemonInfo> pokemonesTemp = new List<PokemonInfo>();
             try
             {

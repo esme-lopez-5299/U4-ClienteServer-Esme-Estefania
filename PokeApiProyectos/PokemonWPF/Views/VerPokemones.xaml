@@ -10,8 +10,8 @@
     <Window.DataContext>
         <vm:PokemonViewModel></vm:PokemonViewModel>
     </Window.DataContext>
-
-    <DockPanel>
+    <Grid>
+           <DockPanel>
         <WrapPanel DockPanel.Dock="Top" Background="#ffea00" >
             <Image  Margin="20,10,0,10" Source="/Images/logo.png" Width="160"></Image>
             <TextBlock Foreground="#00296b" FontWeight="Bold" HorizontalAlignment="Center" Height="45" FontSize="35" FontFamily="Segoe UI" TextAlignment="Center" Width="795">Find your Pokemon</TextBlock>
@@ -40,26 +40,44 @@
             </Border>
         </WrapPanel>
         <StackPanel>
-            <TextBlock Text="{Binding Mensaje}" Margin="40,10,20,10" FontWeight="Bold" FontSize="20"></TextBlock>
-            <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible"
-            Name="lstPokemones" Background="White" ItemsSource="{Binding Pokemones}" Width="500" SelectedIndex="0" Margin="5">
+            <TextBlock Text="{Binding Mensaje}" Margin="80,10,80,10" FontWeight="Bold" FontSize="20"></TextBlock>
+                <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" 
+            Name="lstPokemones" Background="White" ItemsSource="{Binding Pokemones}"  Margin="50,5">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel IsItemsHost="True"></WrapPanel>
-                    </ItemsPanelTemplate>
+                            <UniformGrid Columns="4"></UniformGrid>
+                        </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <Image Source="{Binding sprites.other.OfficialArtwork.front_default}" Height="50"></Image>
-                            <TextBlock   Foreground="Black" Text="{Binding name}"
+                <ListBox.ItemTemplate  >
+                        <DataTemplate>
+                            <Border BorderBrush="#ffea00" BorderThickness="2">
+                            <StackPanel HorizontalAlignment="Right">
+                                <Image Source="{Binding sprites.other.OfficialArtwork.front_default}" Height="150"></Image>
+                                <TextBlock Typography.Capitals="AllSmallCaps"  Foreground="Black" Text="{Binding name}"
                                 Margin="5"  FontFamily="Brandon Grotesque" FontSize="20">
-                            </TextBlock>
-                        </StackPanel>
-                        
-                    </DataTemplate>
+                                </TextBlock>
+                            </StackPanel>
+                            </Border>
+                        </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-        </StackPanel>
+                <Button Width="100" Command="{Binding VerDetalleCommand}" CommandParameter="{Binding ElementName=lstPokemones, Path=SelectedItem}">Ver más</Button>
+            </StackPanel>
     </DockPanel>
+
+
+        <local:VerDetallePokemon>
+            <local:VerDetallePokemon.Style>
+                <Style TargetType="UserControl">
+                    <Setter Property="Visibility" Value="Hidden"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ModalVisible}" Value="{x:Static vm:Modal.VerDetalle}">
+                            <Setter Property="Visibility" Value="Visible"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </local:VerDetallePokemon.Style>
+        </local:VerDetallePokemon>
+    </Grid>
+ 
 </Window>

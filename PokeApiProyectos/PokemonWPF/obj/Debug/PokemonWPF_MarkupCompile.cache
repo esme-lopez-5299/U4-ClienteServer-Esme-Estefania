@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\esme_\OneDrive\Documentos\SEPTIMO SEMESTRE\ESPECIALIDAD\U4-ClienteServer-Esme-Estefania\PokeApiProyectos\PokemonWPF\App.xaml
-2-1681506203
+3-1192291480
 
-18595946029
+19-2106386534
 1231958397707
-MainWindow.xaml;Views\VerPokemones.xaml;
+MainWindow.xaml;Views\VerDetallePokemon.xaml;Views\VerPokemones.xaml;
 
 False
 

@@ -75,6 +75,9 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\BuscadorHelper.cs" />
     <Compile Include="ViewModels\PokemonViewModel.cs" />
+    <Compile Include="Views\VerDetallePokemon.xaml.cs">
+      <DependentUpon>VerDetallePokemon.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\VerPokemones.xaml.cs">
       <DependentUpon>VerPokemones.xaml</DependentUpon>
     </Compile>
@@ -90,6 +93,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\VerDetallePokemon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\VerPokemones.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

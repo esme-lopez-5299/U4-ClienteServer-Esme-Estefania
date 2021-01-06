@@ -107,13 +107,27 @@ h2{
     overflow:auto;
 }
 
-.carta{
-    padding:10px;
-    border:10px solid yellow;
-    border-radius:10px;
-    margin:10px;
-    width:250px;
-    height:auto;
+.ver_mas {
+    text-decoration: none;
+    margin: auto;
+    display: block;
+    width: 100px;
+    border-radius: 8px;
+    background-color: #0094ff;
+    color:white;
+    font-weight:bold;
+    padding:14px;
+    font-size:14px;
+    text-align:center;
+}
+
+.carta {
+    padding: 10px;
+    border: 10px solid yellow;
+    border-radius: 10px;
+    margin: 10px;
+    width: 250px;
+    height: auto;
 }
 
 .carta h3{

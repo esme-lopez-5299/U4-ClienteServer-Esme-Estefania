@@ -117,7 +117,8 @@ namespace PokemonWPF.ViewModels
                         var json = await result.Content.ReadAsStringAsync();
                         PokemonInfo p = JsonConvert.DeserializeObject<PokemonInfo>(json);
                         pokemonesTemp.Add(p);
-
+                        Mensaje = "La espera está por terminar";
+                        Lanzar(nameof(Mensaje));
                     }
                     else
                     {
@@ -130,6 +131,8 @@ namespace PokemonWPF.ViewModels
                     var resultHabilidad = await client.GetAsync($"ability/{parametrosBusqueda.habilidadBuscada}");
                     var jsonHabilidad = await resultHabilidad.Content.ReadAsStringAsync();
                     HabilidadCompletaInfo habilidadObtenida = JsonConvert.DeserializeObject<HabilidadCompletaInfo>(jsonHabilidad);
+                    Mensaje = "La espera está por terminar";
+                    Lanzar(nameof(Mensaje));
 
                     foreach (var p in habilidadObtenida.pokemon)
                     {
@@ -137,6 +140,7 @@ namespace PokemonWPF.ViewModels
                         var jsonPoke = await poke.Content.ReadAsStringAsync();
                         PokemonInfo poke2 = JsonConvert.DeserializeObject<PokemonInfo>(jsonPoke);
                         pokemonesTemp.Add(poke2);
+                     
                     }
                 }
                 //Buscar por tipos
@@ -145,13 +149,15 @@ namespace PokemonWPF.ViewModels
                     var resultTipo = await client.GetAsync($"type/{parametrosBusqueda.tipoBuscado }");
                     var jsonTipo = await resultTipo.Content.ReadAsStringAsync();
                     TipoCompletoInfo tipoObtenido = JsonConvert.DeserializeObject<TipoCompletoInfo>(jsonTipo);
-
+                    Mensaje = "La espera está por terminar";
+                    Lanzar(nameof(Mensaje));
                     foreach (var p in tipoObtenido.pokemon)
                     {
                         var poke = await client.GetAsync($"pokemon/{p.pokemon.name}");
                         var jsonPoke = await poke.Content.ReadAsStringAsync();
                         PokemonInfo poke2 = JsonConvert.DeserializeObject<PokemonInfo>(jsonPoke);
                         pokemonesTemp.Add(poke2);
+                       
                     }
                 }
 
@@ -160,11 +166,12 @@ namespace PokemonWPF.ViewModels
             {
                 Mensaje = e.ToString();
                 Lanzar(nameof(Mensaje));
-            }            
+            }
+          
             Pokemones = BuscadorHelper.FiltrarLista(pokemonesTemp, parametrosBusqueda.nombreBuscado, parametrosBusqueda.habilidadBuscada, parametrosBusqueda.tipoBuscado).ToList();
             Mensaje = $"Se han encontrado {Pokemones.Count()} resultados que coinciden con su búsqueda";
-            Lanzar(nameof(Mensaje));
-            Lanzar(nameof(Pokemones));
+            Lanzar();
+       
         }
     }
 

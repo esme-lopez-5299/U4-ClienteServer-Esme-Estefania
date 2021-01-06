@@ -40,7 +40,7 @@ namespace PokemonWPF.Helpers
                                 foreach (var tipos in pokemon.types)
                                 {
                                     if (Habilidad.ability.name == habilidad && pokemon.name.Contains(nombre) && tipos.type.name == tipo)
-                                        pokemones.Add(pokemon);
+                                        pokemones.Add(pokemon);                                    
                                 }
                             }
                         }

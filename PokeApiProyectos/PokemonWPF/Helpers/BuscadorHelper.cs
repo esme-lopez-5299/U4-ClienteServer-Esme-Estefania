@@ -30,7 +30,7 @@ namespace PokemonWPF.Helpers
                 if (habilidad != "--Abilities--" && habilidad!=null)
                 {
                     //Si hay habilidad, escribiste un tipo?
-                    if (tipo != "--Types--")
+                    if (tipo != "--Types--"&&tipo!=null)
                     {
                         //Si hay tipo (Filtra por nombre, habilidad y tipo)
                         foreach (var pokemon in lista)

@@ -27,9 +27,17 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Border BorderBrush="#ffea00" BorderThickness="5">
-                        <Image Width="350" Source="{Binding PokemonParameter.sprites.other.OfficialArtwork.front_default}"></Image>
+                        <Image Width="350" Stretch="Uniform" HorizontalAlignment="Center" >
+                            <Image.Source>
+                                <Binding Path="PokemonParameter.sprites.other.OfficialArtwork.front_default" >
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>/Images/logo.png</ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
                     </Border>
-                    <Border Background="#0096c7" Margin="20,0" CornerRadius="5" Grid.Column="1">
+                    <Border VerticalAlignment="Center" Background="#0096c7" Margin="20,0" CornerRadius="5" Grid.Column="1">
                         <UniformGrid Columns="2">
                             <StackPanel Margin="10">
                                 <WrapPanel>

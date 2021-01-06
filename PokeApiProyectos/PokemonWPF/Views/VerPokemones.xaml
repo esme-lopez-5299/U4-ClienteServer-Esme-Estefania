@@ -13,11 +13,17 @@
    
     <Grid>
            <DockPanel>
-        <WrapPanel DockPanel.Dock="Top" Background="#ffea00" >
-            <Image  Margin="20,10,0,10" Source="/Images/logo.png" Width="160"></Image>
-            <TextBlock Foreground="#00296b" FontWeight="Bold" HorizontalAlignment="Center" Height="45" FontSize="35" FontFamily="Segoe UI" TextAlignment="Center" Width="795">Find your Pokemon</TextBlock>
-        </WrapPanel>
-            <WrapPanel Margin="0,10,0,0" DockPanel.Dock="Top" HorizontalAlignment="Right">
+       
+            <Grid DockPanel.Dock="Top" Background="#ffea00" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="3*" ></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image Margin="20,10,0,10" Source="/Images/logo.png" Width="160"></Image>
+                <TextBlock Grid.Column="1"  Foreground="#00296b" FontWeight="Bold" HorizontalAlignment="Right" Height="45" FontSize="35" FontFamily="Segoe UI" TextAlignment="Center" Width="795">Find your Pokemon</TextBlock>
+            </Grid>
+            <WrapPanel Margin="0,10,0,10" DockPanel.Dock="Top" HorizontalAlignment="Right">
                 <Grid>
                     <ComboBox Name="mybox" Background="White" Margin="10,0,10,0"  SelectedValue="{Binding BusquedaObj.habilidadBuscada, Mode=TwoWay}" SelectedValuePath="name" ItemsSource="{Binding Habilidades.results}" Width="140">
                         <ComboBox.ItemTemplate>
@@ -92,7 +98,7 @@
                 <Button FontSize="18" Background="Transparent" BorderBrush="Transparent" FontWeight="Bold" Foreground="White" Padding="18,0" Command="{Binding HacerBusquedaCommand}" CommandParameter="{Binding BusquedaObj}" x:Name="btnSearch">Search</Button>
             </Border>
         </WrapPanel>
-            <ScrollViewer  VerticalScrollBarVisibility="Visible">
+            <ScrollViewer  Margin="20,10,0,0" VerticalScrollBarVisibility="Visible">
                 <StackPanel>
                     <TextBlock Text="{Binding Mensaje}" Margin="80,10,80,10" FontWeight="Bold" FontSize="20"></TextBlock>
                     <ScrollViewer Name="scroll" VerticalScrollBarVisibility="Hidden">

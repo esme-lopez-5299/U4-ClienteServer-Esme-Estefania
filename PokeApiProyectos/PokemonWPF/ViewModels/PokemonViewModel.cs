@@ -79,6 +79,7 @@ namespace PokemonWPF.ViewModels
             BusquedaObj.habilidadBuscada = null;
             BusquedaObj.nombreBuscado = null;
             BusquedaObj.tipoBuscado = null;
+            Mensaje = "Ingresa nuevos parámetros de búsqueda";
             Pokemones=null;
             Lanzar();
         }
